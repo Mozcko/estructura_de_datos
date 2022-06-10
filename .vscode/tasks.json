@@ -2,14 +2,14 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: gcc-11 compilar archivo activo",
-            "command": "/usr/local/bin/gcc-11",
+            "label": "C/C++: gcc.exe compilar archivo activo",
+            "command": "C:\\ProgramData\\chocolatey\\bin\\gcc.exe",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"

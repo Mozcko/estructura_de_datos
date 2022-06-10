@@ -15,13 +15,13 @@ void guardar_persona(struct persona *pp);
 void mostrar_datos(struct persona pp);
 void persona_mas_alta(struct persona *pp);
 void persona_mas_joven(struct persona *pp);
-void persona_mas_baja(struct persona *pp)
+void persona_mas_baja(struct persona *pp);
 void primer_persona_alf(struct persona *pp);
 void ultima_persona_alf(struct persona *pp);
 void persona_under_20(struct persona *pp);
 void persona_under_160(struct persona *pp);
 void persona_mas_vieja(struct persona *pp);
-void existe_luis(struct persona *pp)
+void existe_luis(struct persona *pp);
 
 int main()
 {
@@ -39,7 +39,13 @@ int main()
     }
     persona_mas_alta(per);
     persona_mas_joven(per);
+    persona_mas_vieja(per);
     primer_persona_alf(per);
+    persona_mas_baja(per);
+    ultima_persona_alf(per);
+    persona_under_20(per);
+    persona_under_160(per);
+    existe_luis(per);
     return 0;
 }
 
@@ -88,7 +94,7 @@ void persona_mas_baja(struct persona *pp){
     {
         if(pp[i].estatura<menor)
         {
-            may = pp[i].estatura;
+            menor = pp[i].estatura;
             ind = i;
         }
     }
@@ -163,13 +169,13 @@ void   primer_persona_alf(struct persona *pp)
 {
 
     char  menor[30];
-    strcpy(menor ,pa[0].nombre);
+    strcpy(menor ,pp[0].nombre);
     int ind = 0;
     for(int i=0; i<NP; i++)
     {
-        if( strcmp(pa[i].nombre,menor) < 0 )
+        if( strcmp(pp[i].nombre,menor) < 0 )
         {
-            strcpy(menor, pa[i].nombre);
+            strcpy(menor, pp[i].nombre);
             ind = i;
         }
     }
@@ -180,25 +186,28 @@ void   primer_persona_alf(struct persona *pp)
 void   ultima_persona_alf(struct persona *pp)
 {
     char  mayor[30];
-    strcpy(mayor ,pa[0].nombre);
+    strcpy(mayor ,pp[0].nombre);
     int ind = 0;
     for(int i=0; i<NP; i++)
     {
-        if( strcmp(pa[i].nombre,mayor) > 0 )
+        if( strcmp(pp[i].nombre,mayor) > 0 )
         {
-            strcpy(mayor, pa[i].nombre);
+            strcpy(mayor, pp[i].nombre);
             ind = i;
         }
     }
-    printf("En una lista ordenada alfabeticamente la ultima persona  es %s \n", menor);
+    printf("En una lista ordenada alfabeticamente la ultima persona  es %s \n", mayor);
     return;
 }
 
 void   existe_luis(struct persona *pp)
-{
-    bool existe = false;
-    for (int i=0; i<NP; i++){
-        if
+{   
+    for(int i=0; i<NP; i++)
+    {
+        if( strcmp(pp[i].nombre,"luis") > 0 )
+        {
+            printf("Dentro de la lista de las personas existe una persona llamada luis \n");
+        }
     }
     return;
 }
