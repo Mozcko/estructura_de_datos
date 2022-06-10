@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": true,
+      "externalConsole": false,
+      "cwd": "/Users/joaquinramos/Desktop/estructura_de_datos/ejercicio3",
+      "program": "/Users/joaquinramos/Desktop/estructura_de_datos/ejercicio3/build/Debug/outDebug",
+      "MIMode": "gdb"
+    }
+  ]
+}
