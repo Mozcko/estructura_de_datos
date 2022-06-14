@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <time.h>
 
 struct perro{
@@ -10,33 +9,34 @@ struct perro{
     float altura;
 };
 
-char razas[][30] = {
-    "salchicha",
-    "bulldog",
-    "chihuahua",
-    "pastor aleman",
-    "pastor ingles",
-    "pitbull",
-    "doberman",
-    "husky",
-    "labrador",
-    "schnauzer",
-    "pug",
-    "sharpei",
-    "xoloescuincle",
-    "galgo"
-};
-
-void menu();
 void agregar(struct perro *pdog, int cant);
 void mostrar(struct perro *pdog, int cant);
 void modificar(struct perro *pdog, int cant);
 
+
+char lista[][30]={
+"Salchicha",
+"Bull Dog",
+"Chihuahua",
+"Pastor Aleman",
+"Pastor Ingles",
+"Pit Bull",
+"Doberman",
+"Husky",
+"Labrador",
+"Esnauser",
+"Pug",
+"Sharpei",
+"Xolo Escuintle",
+"Galgo"
+};
+
 int main()
 {
-    srand(time(NULL));
+    int segundos;
+    segundos = time(NULL);
+    srand(segundos);
     menu();
-    
     return 0;
 }
 
@@ -88,44 +88,53 @@ void menu()
 
 void agregar(struct perro *pdog, int cant)
 {
+
     int aux;
-
     pdog[cant].edad = rand() % 16;
-    printf("la edad del perro es %i \n", pdog[cant].edad);
+    printf("la Edad del perro es  %i \n", pdog[cant].edad);
 
-    aux = (rand() % 4980) + 20;
-    pdog[cant].peso = (float)(aux) / 100;
-    printf("el peso del perro es %.2f kg \n", pdog[cant].peso);
+    aux = rand()%4980 + 20;
+    pdog[cant].peso = (float)aux /100;
+    printf("el peso del perro es  %.2f kg \n", pdog[cant].peso);
 
-    aux = (rand() % 15) + 2;
-    pdog[cant].altura = (float)(aux) / 100;
-    printf("la altura del perro es %.2f m \n", pdog[cant].altura);
 
-    aux = rand() % 14;
-    strcpy(pdog[cant].raza, razas[aux]);
-    printf("la raza del perro es %s \n", pdog[cant].raza);
+    //2-----16
+    aux = rand() % 15 + 2; /// 2---16
+    pdog[cant].altura = (float) aux / 10; //0.2 ----- 1.6
+    printf("la altura  del perro es  %.1f m \n", pdog[cant].altura);
+
+    aux = rand() % 14; // depende de los elementos de la lista
+    strcpy(pdog[cant].raza, lista[aux]);
+    printf("la raza  del perro es  %s \n", pdog[cant].raza);
     return;
 }
 
 void mostrar(struct perro *pdog, int cant)
 {
-    for (int i = 0; i < cant; i++){
-        printf("El Perro %s tiene %i anios, pesa %.2f kg y mide %.2f m \n", pdog[i].raza, pdog[i].edad, pdog[i].peso, pdog[i].altura);
+    for(int i=0; i<cant; i++){
+        printf("El perro %s tiene %i anios, pesa %.2f kg y mide %.1f m \n",pdog[i].raza, pdog[i].edad, pdog[i].peso, pdog[i].altura);
     }
+
     return;
 }
+
+
 
 void modificar(struct perro *pdog, int cant)
 {
     int pos;
-    do {
-        printf("ingrese el perro de la lista que quiere modificar \n");
-        scanf("%i", &pos);
-        if (pos > cant || pos < 1){
-            printf("no existe esa posicion de la lista \n");
+    do
+    {
+        printf("Que perro de la lista quieres modificar? \n");
+        scanf("%i",&pos);
+        if(pos>cant || pos < 1)
+        {
+            printf("No existe esa posicion \n");
+            Sleep(1000);
             system("cls");
         }
-    }while ((pos > cant));
+    }
+    while(pos>cant || pos <1);
     printf("Escribe la raza del perro \n");
     fflush(stdin);
     gets(pdog[pos-1].raza);
@@ -135,6 +144,5 @@ void modificar(struct perro *pdog, int cant)
     scanf("%f",&pdog[pos-1].peso);
     printf("Escribe la altura del perro %s \n",pdog[pos-1]);
     scanf("%f",&pdog[pos-1].altura);
-
     return;
 }
