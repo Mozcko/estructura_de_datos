@@ -14,7 +14,7 @@ char razas[][30] = {
     "salchicha",
     "bulldog",
     "chihuahua",
-    "pastor aleman",
+    "pastor alemán",
     "pastor ingles",
     "pitbull",
     "doberman",
