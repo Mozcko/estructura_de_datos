@@ -1,6 +1,7 @@
-#include<stdio.h>
-//#include<conio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h> 
 
 char FIGURAS[4][20]= {"CORAZONES","TREBOLES","ESPADAS","DIAMANTES"};
 
