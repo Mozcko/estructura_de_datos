@@ -186,7 +186,7 @@ int cantidad()
 {
     int n = 0;
     struct node *reco = first;
-    if (vacia())
+    if (empty())
     {
         return n;
     }
